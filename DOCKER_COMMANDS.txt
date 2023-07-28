@@ -1,3 +1,5 @@
+docker ps
+
 docker network create kafka-network --driver bridge
 
 docker run -d --name zookeeper-server  --network kafka-network  -e ALLOW_ANONYMOUS_LOGIN=yes   bitnami/zookeeper:latest
@@ -7,3 +9,4 @@ docker run -d --name kafka-server   --network kafka-network   -e ALLOW_PLAINTEXT
 docker run -d --rm -p 9000:9000   --network kafka-network   -e KAFKA_BROKERCONNECT=kafka-server:9092  -e SERVER_SERVLET_CONTEXTPATH="/"  obsidiandynamics/kafdrop:latest
 
 kafka-topics.sh --bootstrap-server localhost:9092 --topic SUBSCRIBER --create --partitions 3 --replication-factor 1
+
