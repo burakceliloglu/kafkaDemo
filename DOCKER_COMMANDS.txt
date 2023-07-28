@@ -5,3 +5,5 @@ docker run -d --name zookeeper-server  --network kafka-network  -e ALLOW_ANONYMO
 docker run -d --name kafka-server   --network kafka-network   -e ALLOW_PLAINTEXT_LISTENER=yes  -e KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper-server:2181   bitnami/kafka:latest
 
 docker run -d --rm -p 9000:9000   --network kafka-network   -e KAFKA_BROKERCONNECT=kafka-server:9092  -e SERVER_SERVLET_CONTEXTPATH="/"  obsidiandynamics/kafdrop:latest
+
+kafka-topics.sh --bootstrap-server localhost:9092 --topic SUBSCRIBER --create --partitions 3 --replication-factor 1
