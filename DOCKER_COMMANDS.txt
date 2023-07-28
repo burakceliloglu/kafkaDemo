@@ -1,3 +1,5 @@
+docker ps
+
 docker network create kafka-network --driver bridge
 
 docker run -d --name zookeeper-server  --network kafka-network  -e ALLOW_ANONYMOUS_LOGIN=yes   bitnami/zookeeper:latest
